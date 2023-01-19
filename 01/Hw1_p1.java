@@ -69,8 +69,22 @@ public class Hw1_p1 {
 
 	public static boolean isPrefix(String s1, String s2) {
 		// implement this method
-		System.out.println("isPrefix");
-		return true;
+		List<String> tempList = new ArrayList<String>();
+
+		for (int i = 0; i < s1.length(); i++) {
+			// for (int j = 0; j < s2.length(); j++) {
+			if (s1.charAt(i) == s2.charAt(i)) {
+				tempList.add("yes");
+			}
+			// }
+		}
+		// System.out.println(s1.length());
+		// System.out.println(tempList.size());
+		if (tempList.size() == s1.length()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public static void main(String[] args) {
