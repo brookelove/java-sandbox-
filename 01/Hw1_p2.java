@@ -23,8 +23,8 @@ public class Hw1_p2 {
 		// int file_price;
 		// int file_year;
 		Scanner fileInput = new Scanner(new File("car_input.txt"));
+		int start = 0;
 		while (fileInput.hasNext()) {
-			// int start = 0;
 			// System.out.println(fileInput.nextLine()); // reads each line as long as the
 			// file has lines
 			String line = fileInput.nextLine();
@@ -37,7 +37,11 @@ public class Hw1_p2 {
 			int file_price = Integer.parseInt(splitLine[1].strip());
 			int file_year = Integer.parseInt(splitLine[2].strip());
 			Car new_car = new Car(file_make, file_year, file_price);
-			System.out.println(new_car);
+			cars[start] = new_car;
+			// System.out.println(new_car);
+			// System.out.println(start);
+			start++;
+
 			// String[] splitLine = line.split(","); // splits each line by each comma
 			// start += 1;
 			// System.out.println(Arrays.toString(splitLine));
@@ -49,7 +53,7 @@ public class Hw1_p2 {
 
 		}
 		fileInput.close();
-		System.out.println(list);
+		System.out.println(cars);
 		// for (int i = 0; i < list.size(); i++) {
 		// System.out.println(i);
 		// System.out.println(Arrays.toString(splitLine));
