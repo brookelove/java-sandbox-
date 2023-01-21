@@ -9,12 +9,25 @@ public class Hw1_p2 {
 
 	public static void findByMake(Car[] cars, String make) {
 		// implement this method
-		System.out.print(make);
+		// make a list for all of the items that you want to add in the array
+		List<Object> list = new ArrayList<Object>();
+		// System.out.print(make);
 		for (int i = 0; i < cars.length; i++) {
 			// have to include an if statement to look at the first object value in the
-			// array to compare to the make
-			// arrray
-			System.out.println(cars[i]);
+			// array
+			String obj_make = cars[i].getMake().toString();
+			// System.out.println(obj_make);
+			// System.out.println(obj_make.getClass().getTypeName());
+			// System.out.println(obj_make.equals(make));
+			// System.out.println(make.getClass().getTypeName());
+			if (obj_make.equals(make)) {
+				// // System.out.println(cars[i]);
+				System.out.println(cars[i]);
+				// list.add(cars[i]);
+			}
+			// add the found items in the list
+			// System.out.println(cars[i]);// prints each object in an array
+			// System.out.println(cars[i].getMake());// returns each make
 		}
 	}
 
@@ -25,7 +38,7 @@ public class Hw1_p2 {
 			// have to include an if statement to look at the second object value in the to
 			// compare to the year
 			// array
-			System.out.println(cars[i]);
+			System.out.println("found");
 		}
 	}
 
@@ -90,8 +103,8 @@ public class Hw1_p2 {
 
 		System.out.println("\nAll cars made by " + make);
 		findByMake(cars, make);
-		System.out.println("\nAll cars made before " + year);
-		olderThan(cars, year);
+		// System.out.println("\nAll cars made before " + year);
+		// olderThan(cars, year);
 	}
 
 }
