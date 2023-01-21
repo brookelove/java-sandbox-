@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hw1_p1 {
-
+	// Descrition: checks to see if given number is in the array list
+	// Input: Array of numbers - a, user input intger - x
+	// Output: prints if the number is in the array or not
 	public static void find(int[] a, int x) {
 		List<String> tempList = new ArrayList<String>();
 		for (int i = 0; i < a.length; i++) {
@@ -67,25 +69,31 @@ public class Hw1_p1 {
 		// System.out.println("end here");
 	}
 
+	// Descrition: checks to see if the string prefix matches a longer string
+	// Input: String prefix - s1, longer string to compare to - s2
+	// Output: returns true or false depending if the prefix is the same
 	public static boolean isPrefix(String s1, String s2) {
 		// implement this method
 		List<String> tempList = new ArrayList<String>();
 
 		for (int i = 0; i < s1.length(); i++) {
 			// for (int j = 0; j < s2.length(); j++) {
-			if (s1.charAt(i) == s2.charAt(i)) {
-				tempList.add("yes");
+			if (s1.charAt(i) == s2.charAt(i)) { // if the characters at the index are equal add 'yes' to the list
+				tempList.add("y");
 			}
 			// }
 		}
 		// System.out.println(s1.length());
 		// System.out.println(tempList.size());
-		if (tempList.size() == s1.length()) {
+		if (tempList.size() == s1.length()) { // if the length of the list and the prefix are the same then return true
 			return true;
 		} else {
 			return false;
 		}
 	}
+	// Descrition: has an array of numbes runs the methods stated above
+	// Input: Argument strings
+	// Output: Prints the results of the methods above
 
 	public static void main(String[] args) {
 
