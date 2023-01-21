@@ -18,7 +18,7 @@ public class Hw1_p2 {
 	public static void main(String[] args) throws IOException {
 		// complete this part
 		Car[] cars = new Car[10];
-		List<String> list = new ArrayList<String>();
+		// List<String> list = new ArrayList<String>();
 		// String file_make;
 		// int file_price;
 		// int file_year;
