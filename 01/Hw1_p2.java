@@ -9,10 +9,24 @@ public class Hw1_p2 {
 
 	public static void findByMake(Car[] cars, String make) {
 		// implement this method
+		System.out.print(make);
+		for (int i = 0; i < cars.length; i++) {
+			// have to include an if statement to look at the first object value in the
+			// array to compare to the make
+			// arrray
+			System.out.println(cars[i]);
+		}
 	}
 
 	public static void olderThan(Car[] cars, int year) {
 		// implement this method
+		System.out.print(year);
+		for (int i = 0; i < cars.length; i++) {
+			// have to include an if statement to look at the second object value in the to
+			// compare to the year
+			// array
+			System.out.println(cars[i]);
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -53,7 +67,7 @@ public class Hw1_p2 {
 
 		}
 		fileInput.close();
-		System.out.println(cars);
+		// System.out.println(cars);
 		// for (int i = 0; i < list.size(); i++) {
 		// System.out.println(i);
 		// System.out.println(Arrays.toString(splitLine));
@@ -71,13 +85,13 @@ public class Hw1_p2 {
 			System.out.println(cars[i]);
 		}
 
-		// String make = "Honda";
-		// int year = 2017;
+		String make = "Honda";
+		int year = 2017;
 
-		// System.out.println("\nAll cars made by " + make);
-		// findByMake(cars, make);
-		// System.out.println("\nAll cars made before " + year);
-		// olderThan(cars, year);
+		System.out.println("\nAll cars made by " + make);
+		findByMake(cars, make);
+		System.out.println("\nAll cars made before " + year);
+		olderThan(cars, year);
 	}
 
 }
