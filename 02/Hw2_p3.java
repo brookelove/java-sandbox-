@@ -13,13 +13,13 @@ public class Hw2_p3 {
 		}
 		// 2. removed the first element in the list and stire its value
 
-		int currentFirst = intList.removeFirst();
-		System.out.println("Placed on Stack: " + currentFirst);
+		int currentInt = intList.removeFirst();
+		// System.out.println("Placed on Stack: " + currentInt);
 		// 3. recursive call
 		helper(intList, i - 1);
 		// 4. add the most recenetly removed element to the end of the list
-		// intList.addFirst(currentFirst);
-		System.out.println("Removed from stack: " + currentFirst);
+		intList.addLast(currentInt);
+		// System.out.println("Removed from stack: " + currentInt);
 	}
 
 	public static void reverse(DoublyLinkedList<Integer> intList) {
@@ -29,6 +29,8 @@ public class Hw2_p3 {
 		// System.out.println(intList.last()); // gets the last item in the array
 		// System.out.println(intList.size()); //gets the size of the list
 		helper(intList, index);
+		// System.out.println(intList.first());
+		// System.out.println(intList.last());
 	}
 
 	// use the main method for testing
