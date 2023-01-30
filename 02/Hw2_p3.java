@@ -8,7 +8,7 @@ public class Hw2_p3 {
 		// System.out.println(intList);
 		// System.out.println(i);
 		// 1.base case
-		if (i <= 0) {
+		if (i <= 0) { // could also be i == 0
 			return;
 		}
 		// 2. removed the first element in the list and stire its value
@@ -24,7 +24,7 @@ public class Hw2_p3 {
 
 	public static void reverse(DoublyLinkedList<Integer> intList) {
 		// complete this method
-		intList.last();
+		// intList.last();
 		int index = intList.size();
 		// System.out.println(intList.last()); // gets the last item in the array
 		// System.out.println(intList.size()); //gets the size of the list
