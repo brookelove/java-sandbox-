@@ -6,19 +6,16 @@ import java.util.List;
 // binary search tree storing integers
 public class IntBST extends NodeBinaryTree<Integer> {
 
-	// private int size = 0;
+	//private int size = 0;
 
-	public IntBST() {
-	}
+	public IntBST() {	}
 
 	public int size() {
 		return size;
 	}
 
-	public void setSize(int s) {
-		size = s;
-	}
-
+	public void setSize(int s) { size = s; }
+	
 	public boolean isEmpty() {
 		return size() == 0;
 	}
@@ -46,20 +43,19 @@ public class IntBST extends NodeBinaryTree<Integer> {
 	 * 
 	 * @param n Node in tree to start printing from
 	 */
-
-	public void print(Node<Integer> n) {
-		print("", n);
-	}
-
-	public void print(String prefix, Node<Integer> n) {
-		if (n != null) {
-			print(prefix + "       ", right(n));
-			System.out.println(prefix + ("|-- ") + n.getElement());
-			print(prefix + "       ", left(n));
-		}
-	}
-
-	public void inorderPrint(Node<Integer> n) {
+	
+	  public void print(Node<Integer> n){ print ("", n); }
+	  
+	  public void print(String prefix, Node<Integer> n){
+		  if (n != null){
+			  print(prefix + "       ", right(n));
+			  System.out.println (prefix + ("|-- ") + n.getElement());
+			  print(prefix + "       ", left(n));
+		  }
+	  }
+	  
+	  
+	  public void inorderPrint(Node<Integer> n) {
 		if (n == null)
 			return;
 		inorderPrint(n.getLeft());
@@ -67,27 +63,24 @@ public class IntBST extends NodeBinaryTree<Integer> {
 		inorderPrint(n.getRight());
 	}
 
+	
 	public Iterable<Node<Integer>> children(Node<Integer> n) {
-		List<Node<Integer>> snapshot = new ArrayList<>(2); // max capacity of 2
-		if (left(n) != null)
-			snapshot.add(left(n));
+		List<Node<Integer>> snapshot = new ArrayList<>(2); // max capacity of 2 
+		if (left(n) != null) 
+			snapshot.add(left(n)); 
 		if (right(n) != null)
-			snapshot.add(right(n));
-		return snapshot;
+			snapshot.add(right(n)); return snapshot; 
 	}
-
-	public int height(Node<Integer> n) throws IllegalArgumentException {
-		if (isExternal(n)) {
-			return 0;
-		}
+	
+	public int height(Node<Integer> n) throws IllegalArgumentException { 
+		if (isExternal(n)) { return 0; } 
 		int h = 0; // base case if p is external
-		for (Node<Integer> c : children(n))
-			h = Math.max(h, height(c));
-		return h + 1;
+		for (Node<Integer> c : children(n)) h = Math.max(h, height(c)); return h + 1; 
 	}
 
-	public static IntBST makeBinaryTree(int[] a) {
-
+	
+	public static IntBST makeBinaryTree(int[] a){
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-import nodeTrees.IntBST;
+import nodeTrees.*;
 // make sure all files in nodeTrees package are accessible
 // some files in nodeTrees may need files from net.datastructures
 

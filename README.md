@@ -10,6 +10,10 @@ Worked on the implimenting the use of java, to opne a file, read the contents in
 
 Used data algorithms to reverse a doubly linked node.
 
+## Week 03
+
+Working with Binary Trees! Creating a binary tree depending on the list!
+
 ## Contributions
 
 Since this is a reposityory on homeowrk please do not clone and try to bettewr my code. This is my first time working with Java. If you have any tips an dtricks that I might benefit from please don't hesitate to reach out and shoot me a message!
