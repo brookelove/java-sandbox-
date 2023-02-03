@@ -3,6 +3,23 @@ import nodeTrees.*;
 // some files in nodeTrees may need files from net.datastructures
 
 public class Hw3_p7 {
+	public static IntBST binaryTreeBuilder(int[] a, int startIndex, int endIndex) {
+		// create new tree
+		IntBST tree = new IntBST();
+
+		// base case
+		if (startIndex > endIndex) {
+			return tree;
+		}
+		// find the middle element of the array
+		// add root note using the middle element of the array
+		// middle is the root now
+		// build the left side of the tree using recursion
+		// build the right side of the tree using recursion
+		// calculate the tree size
+		/// attach the left and right tree to the middle node
+		return tree;
+	}
 
 	public static void main(String[] args) {
 
