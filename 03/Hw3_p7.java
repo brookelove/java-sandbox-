@@ -21,6 +21,11 @@ public class Hw3_p7 {
 		return tree;
 	}
 
+	public static IntBST makeBinaryTree(int[] a) {
+		IntBST tree = binaryTreeBuilder(a, 0, 0);
+		return tree;
+	}
+
 	public static void main(String[] args) {
 
 		IntBST t = new IntBST();
