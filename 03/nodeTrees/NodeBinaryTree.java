@@ -34,7 +34,6 @@ import java.util.Stack;
  */
 public class NodeBinaryTree<E> extends AbstractBinaryTree<E> {
 
-	
 	/** Factory function to create a new node storing element e. */
 	protected Node<E> createNode(E e, Node<E> parent, Node<E> left, Node<E> right) {
 		return new Node<E>(e, parent, left, right);
@@ -45,12 +44,13 @@ public class NodeBinaryTree<E> extends AbstractBinaryTree<E> {
 	public Node<E> root = null; // root of the tree
 
 	/** The number of nodes in the binary tree */
-//	private int size = 0; // number of nodes in the tree
+	// private int size = 0; // number of nodes in the tree
 	protected int size = 0;
-			
+
 	// constructor
 	/** Construts an empty binary tree. */
-	public NodeBinaryTree() { } // constructs an empty binary tree
+	public NodeBinaryTree() {
+	} // constructs an empty binary tree
 
 	// accessor methods (not already implemented in AbstractBinaryTree)
 	/**
@@ -186,8 +186,8 @@ public class NodeBinaryTree<E> extends AbstractBinaryTree<E> {
 	 *
 	 * @param n  a leaf of the tree
 	 * @param t1 an independent tree whose structure becomes the left child of n
-	 * @param t2 an independent tree whose structure becomes the right child of n 
-	 * @throws IllegalArgumentException if n  is not a valid Node for this tree
+	 * @param t2 an independent tree whose structure becomes the right child of n
+	 * @throws IllegalArgumentException if n is not a valid Node for this tree
 	 * @throws IllegalArgumentException if n is not a leaf
 	 */
 	public void attach(Node<E> n, NodeBinaryTree<E> t1, NodeBinaryTree<E> t2) throws IllegalArgumentException {
@@ -240,25 +240,24 @@ public class NodeBinaryTree<E> extends AbstractBinaryTree<E> {
 		return temp;
 	}
 
-	
 	/**
 	 * Print a binary tree horizontally
-	 * Modified version of https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram
+	 * Modified version of
+	 * https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram
 	 * Modified by Keith Gutfreund
+	 * 
 	 * @param n Node in tree to start printing from
 	 */
-	void print(Node<E> n){ 
-		print ("", n); 
+	void print(Node<E> n) {
+		print("", n);
 	}
-	
-	public void print(String prefix, Node<E> n){
-	  if (n != null){
-	    print(prefix + "       ", right(n));
-	    System.out.println (prefix + ("|-- ") + n.getElement());
-	    print(prefix + "       ", left(n));
-	  }
+
+	public void print(String prefix, Node<E> n) {
+		if (n != null) {
+			print(prefix + "       ", right(n));
+			System.out.println(prefix + ("|-- ") + n.getElement());
+			print(prefix + "       ", left(n));
+		}
 	}
-	
-	
-	
+
 } // ----------- end of NodeBinaryTree class -----------
