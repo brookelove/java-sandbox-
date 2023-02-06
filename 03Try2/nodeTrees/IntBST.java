@@ -152,9 +152,6 @@ public class IntBST extends NodeBinaryTree<Integer> {
 			mainRoot.setRight(rt.root);
 			tree.size += rt.size;
 		}
-
-		// attach them on the ends
-		// tree.attach(mainRoot, lt, rt);
 		return tree;
 	}
 
