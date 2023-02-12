@@ -11,26 +11,70 @@ class Hw4_p6 {
             int randomNum = random.nextInt(upper);
             arr[i] = randomNum;
         }
-        System.out.println(Arrays.toString(arr));
+        // System.out.println(Arrays.toString(arr));
+    }
+
+    public static void elapsedTimeOutput(int[] arr) {
+
     }
 
     public static void main(String[] args) {
         // insttiate three empty areas: hash map, array list, and linked list
-        HashMap<String, Integer> myMap = new HashMap<>();
+        HashMap<Integer, Integer> myMap = new HashMap<>();
         ArrayList<Integer> myArrayList = new ArrayList<>();
         LinkedList<Integer> myLinkedList = new LinkedList<>();
+        long startTime, endTime, elapsedTime;
         int[] insertKeys = new int[10];
         // calculate average total insertion times and average total search time for
-        // each data structure
-        // for (int i = 0; i < 10; i++) {
-        // // 1. generate 100,000 distinct random integeers from 1 to 1,000,000]
-        // Random random = new Random();
-        // int randomNum = random.nextInt(1000000);
-        // // 2. store them in an array of integers
-        // insertKeys[i] = randomNum;
-        // }
         createKeys(insertKeys, 1000000);
-
+        // each data structure
+        startTime = System.nanoTime();
+        for (int i = 0; i < 10; i++) {
+            myMap.put(insertKeys[i], i);
+        }
+        endTime = System.nanoTime();
+        elapsedTime = endTime - startTime;
+        System.out.println("Number of keys = 100000");
+        System.out.println();
+        System.out.println("HashMap average total inset time = " + elapsedTime);
+        startTime = System.nanoTime();
+        for (int i = 0; i < 10; i++) {
+            myArrayList.add(insertKeys[i]);
+        }
+        endTime = System.nanoTime();
+        elapsedTime = endTime - startTime;
+        System.out.println("ArrayList average total insert time = " + elapsedTime);
+        startTime = System.nanoTime();
+        for (int i = 0; i < 10; i++) {
+            myLinkedList.add(insertKeys[i]);
+        }
+        endTime = System.nanoTime();
+        elapsedTime = endTime - startTime;
+        System.out.println("ArrayList average total insert time = " + elapsedTime);
+        System.out.println();
+        // =============================================================================
+        createKeys(insertKeys, 2000000);
+        startTime = System.nanoTime();
+        for (int i = 0; i < 10; i++) {
+            myMap.containsKey(insertKeys[i]);
+        }
+        endTime = System.nanoTime();
+        elapsedTime = endTime - startTime;
+        System.out.println("HashMap average total search time = " + elapsedTime);
+        startTime = System.nanoTime();
+        for (int i = 0; i < 10; i++) {
+            myArrayList.contains(insertKeys[i]);
+        }
+        endTime = System.nanoTime();
+        elapsedTime = endTime - startTime;
+        System.out.println("ArrayList average total search time = " + elapsedTime);
+        startTime = System.nanoTime();
+        for (int i = 0; i < 10; i++) {
+            myLinkedList.contains(insertKeys[i]);
+        }
+        endTime = System.nanoTime();
+        elapsedTime = endTime - startTime;
+        System.out.println("LinkedList average total search time = " + elapsedTime);
     }
 
 }
