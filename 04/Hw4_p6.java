@@ -50,7 +50,7 @@ class Hw4_p6 {
         }
         endTime = System.nanoTime();
         elapsedTime = endTime - startTime;
-        System.out.println("ArrayList average total insert time = " + elapsedTime);
+        System.out.println("LinkedList average total insert time = " + elapsedTime);
         System.out.println();
         // =============================================================================
         createKeys(insertKeys, 2000000);
