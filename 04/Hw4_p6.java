@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Random;
 
+/*
+ * Description: Even though there are nanosecond differences between the HashMap, Array List and Linked list. It seems after executing this code many times that the Array List takes the least amount of time while the Linked list takes the most amount of time to insert. Although for searching a list a HashMap can significantly search faster than either where the LinkedList has the worst time to search on the list. A hashMap takes the second to least amount of time to insert between the three, but it overall the fastest at searching a list
+ */
 class Hw4_p6 {
     public static void createKeys(int[] arr, int upper) {
         for (int i = 0; i < 10; i++) {
