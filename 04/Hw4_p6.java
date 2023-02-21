@@ -17,10 +17,6 @@ class Hw4_p6 {
         // System.out.println(Arrays.toString(arr));
     }
 
-    public static void elapsedTimeOutput(int[] arr) {
-
-    }
-
     public static void main(String[] args) {
         // insttiate three empty areas: hash map, array list, and linked list
         HashMap<Integer, Integer> myMap = new HashMap<>();
