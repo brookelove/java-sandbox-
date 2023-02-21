@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.IllegalFormatWidthException;
 import java.util.Random;
 
 class Hw7 {
@@ -18,6 +19,18 @@ class Hw7 {
         }
     }
 
+    // public class IntComparator implements Comparator<K> {
+    // public int compare(Integer a, Integer b) {
+    // if (a() < b()) {
+    // return 1;
+    // } else if (a() == b()) {
+    // return 0;
+    // } else {
+    // return 1;
+    // }
+    // }
+    // }
+
     // code for merge sort
     // Citation:
     // merge contents of the arrays S1 ans S2 into properly sized array S
@@ -25,6 +38,8 @@ class Hw7 {
         int i = 0;
         int j = 0;
         while (i + j < S.length) {
+            // if j is at the end of the array or i is less than S1 length and if the
+            // compare results are less than 0
             if (j == S2.length || (i < S1.length && comp.compare(S1[i], S2[j]) < 0)) {
                 S[i + j] = S[i++];
             } else {
@@ -71,7 +86,6 @@ class Hw7 {
                 left++;
                 right--;
             }
-
         }
         temp = S[left];
         S[left] = S[right];
@@ -80,10 +94,7 @@ class Hw7 {
         quickSortInPlace(S, comp, a, left - 1);
         quickSortInPlace(S, comp, left + 1, b);
     }
-    // heap sort
-    // Citation
 
-    // create random integers
     public static void randomArr(int[] arr, int upper) {
         Random random = new Random();
         for (int i = 0; i < 10; i++) {
@@ -91,44 +102,23 @@ class Hw7 {
         }
     }
 
-    public static void insertionTime(int arr[]) {
-        // 3. create start time
-        long startTime = System.nanoTime();
-        // 4. Run interstion sort and calc the elapsted time.
-        insertionSort(arr);
-        // 5. create end time
-        long endTime = System.nanoTime();
-        // 6. subtract the two
-        long elapsedTime = endTime - startTime;
-        System.out.println("The elapsed time for insertion sort is" + elapsedTime);
-    }
+    static void heapify(int arr[], int n, int i) {
+        // Find largest among root, left child and right child
+        int largest = i;
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+        if (l < n && arr[l] > arr[largest])
+            largest = l;
 
-    public static void mergeTime(int arr[]) {
-        // 3. create start time
-        long startTime = System.nanoTime();
-        // 4. Run interstion sort and calc the elapsted time.
-        mergeSort(null, null);
-        ;
-        // 5. create end time
-        long endTime = System.nanoTime();
-        // 6. subtract the two
-        long elapsedTime = endTime - startTime;
-        System.out.println("The elapsed time for merge sort is" + elapsedTime);
+        if (r < n && arr[r] > arr[largest])
+            largest = r;
+        if (largest != i) {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+            heapify(arr, n, largest);
+        }
     }
-
-    public static void quickTime(int arr[]) {
-        // 3. create start time
-        long startTime = System.nanoTime();
-        // 4. Run interstion sort and calc the elapsted time.
-        // quickSortInPlace(null);
-        // 5. create end time
-        long endTime = System.nanoTime();
-        // 6. subtract the two
-        long elapsedTime = endTime - startTime;
-        System.out.println("The elapsed time for hash sort is" + elapsedTime);
-    }
-
-    // code for heap sort found on interent
     /*
      * Citation:
      * Parewa Labs Pvt.Ltd.(2023,February 20).
@@ -138,7 +128,7 @@ class Hw7 {
      * from https:// www.programiz.com/dsa/heap-sort
      */
 
-    public void sort(int arr[]) {
+    public static void heapSort(int arr[]) {
         int n = arr.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(arr, n, i);
@@ -151,7 +141,6 @@ class Hw7 {
             heapify(arr, i, 0);
         }
     }
-
     /*
      * Citation:
      * Parewa Labs Pvt.Ltd.(2023,February 20).
@@ -161,47 +150,72 @@ class Hw7 {
      * from https:// www.programiz.com/dsa/heap-sort
      */
 
-    void heapify(int arr[], int n, int i) {
-        // Find largest among root, left child and right child
-        int largest = i;
-        int l = 2 * i + 1;
-        int r = 2 * i + 2;
-        if (l < n && arr[l] > arr[largest])
-            largest = l;
+    public static void insertionTime(int arr[]) {
+        // 3. create start time
+        long startTime = System.nanoTime();
+        // 4. Run interstion sort and calc the elapsted time.
+        insertionSort(arr);
+        // 5. create end time
+        long endTime = System.nanoTime();
+        // 6. subtract the two
+        long elapsedTime = endTime - startTime;
+        System.out.println("The elapsed time for insertion sort is " + elapsedTime);
+    }
 
-        if (r < n && arr[r] > arr[largest])
-            largest = r;
-        // Swap and continue heapifying if root is not largest
-        if (largest != i) {
-            int swap = arr[i];
-            arr[i] = arr[largest];
-            arr[largest] = swap;
-            heapify(arr, n, largest);
-        }
+    public static void mergeTime(int arr[]) {
+        long startTime = System.nanoTime();
+        Comparator<K> comp = new Comparator<K>();
+        mergeSort(arr, comp.compare(arr[0], arr[arr.length - 1]));
+        long endTime = System.nanoTime();
+        long elapsedTime = endTime - startTime;
+        System.out.println("The elapsed time for merge sort is " + elapsedTime);
+    }
+
+    public static void quickTime(int arr[]) {
+        // 3. create start time
+        long startTime = System.nanoTime();
+        // 4. Run interstion sort and calc the elapsted time.
+        Comparator<K> comp = new Comparator<K>();
+        quickSortInPlace(arr, comp, 0, arr.length - 1);
+        // 5. create end time
+        long endTime = System.nanoTime();
+        // 6. subtract the two
+        long elapsedTime = endTime - startTime;
+        System.out.println("The elapsed time for quick sort is " + elapsedTime);
+    }
+
+    public static void heapTime(int arr[]) {
+        // 3. create start time
+        long startTime = System.nanoTime();
+        // 4. Run interstion sort and calc the elapsted time.
+        heapSort(arr);
+        // 5. create end time
+        long endTime = System.nanoTime();
+        long elapsedTime = endTime - startTime;
+        System.out.println("The elapsed time for heap sort is " + elapsedTime);
     }
 
     public static void main(String[] args) {
         int[] num = new int[10];
-        int n = 10000;
+        int n = 40000;
         // 1. create random array that is 10
-        randomArr(num, 1000000);
-        System.out.println(Arrays.toString(num));
-        // // 2. create a copy the random array
-        // int[] copyOne = Arrays.copyOf(num, 10)
-        // // 3. run the insertion sort time
-        // insertionTime();
-        // // 4. create a copy the random array
-        // int[] copyTwo = Arrays.copyOf(num, 10)
-        // // 5. run the merge sort sort time
-        // mergeTime(null);
-        // // 6. create a copy the random array
-        // int[] copyThree = Arrays.copyOf(num, 10)
-        // // 7. runn the quick sort time
-        // quickTime(num);
+        randomArr(num, n);
+        // 2. create a copy the random array
+        int[] copyOne = Arrays.copyOf(num, 10);
+        // 3. run the insertion sort time
+        insertionTime(copyOne);
+        // 4. create a copy the random array
+        int[] copyTwo = Arrays.copyOf(num, 10);
+        // 5. run the merge sort sort time
+        mergeTime(copyTwo); // need to finish this one
+        // 6. create a copy the random array
+        int[] copyThree = Arrays.copyOf(num, 10);
+        // 7. runn the quick sort time
+        quickTime(copyThree); // need to finish this one
         // // 8. create a copy the random array
-        // int[] copyFour = Arrays.copyOf(num, 10)
-
-        // // 9. runn the heap sort time
+        int[] copyFour = Arrays.copyOf(num, 10);
+        // 9. runn the heap sort time
+        heapTime(copyFour);
 
     }
 
