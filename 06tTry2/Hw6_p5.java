@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.constant.DirectMethodHandleDesc;
 
 class Hw6_p5 {
     // public static void checkIndirect (int index, ArrayList<Character> arrList,
@@ -30,9 +31,16 @@ class Hw6_p5 {
             directNodes = directNodes + ch + ", ";
 
         }
-        // remove the comma on the last condiion
-        // then list the directly follows node
-        System.out.println(X + " directly follows {" + directNodes + "}");
+        // remove the first letter and the last comma on the last condiion
+        directNodes = directNodes.substring(0, directNodes.length() - 2);
+        if (directNodes.length() == 1) {
+            System.out.println(X + " directly follows { }");
+
+        } else {
+            directNodes = directNodes.substring(3);
+            // then list the directly follows node
+            System.out.println(X + " directly follows {" + directNodes + "}");
+        }
 
     }
 
