@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
+import java.util.Arrays;
 import java.io.FileNotFoundException;
-import java.lang.constant.DirectMethodHandleDesc;
+import java.util.stream.Collectors;
 
 class Hw6_p5 {
     // public static void checkIndirect (int index, ArrayList<Character> arrList,
@@ -16,28 +17,44 @@ class Hw6_p5 {
 
     // }
     // }
-    // public static void checkIndirect(int index, ArrayList<Character> arrList,
-    // ArrayList<Node> adjList) {
-    // int[] visit = new int[adjList.size()];
-    // visit = -1;
-    // String nodeIndirect = "";
-    // }
+    public static ArrayList<Character> checkIndirect(int index, ArrayList<Character> arrList, ArrayList<Node> adjList) {
+        int[] visit = new int[adjList.size()];
+        visit[index] = 1;
+        // String nodeIndirect = " ";
+        ArrayList<Character> NodeIndirect = new ArrayList<Character>();
+        for (Character ch : adjList.get(index).followers) {
+            int characterIndex = arrList.indexOf(ch);
+
+            if (visit[characterIndex] == 0) {
+                // indirect = adjList.get(characterIndex).followers;
+                NodeIndirect.addAll(adjList.get(characterIndex).followers);
+                visit[characterIndex] = 1;
+                checkIndirect(characterIndex, arrList, adjList);
+            }
+        }
+        // nodeIndirect = nodeIndirect.trim();
+        // NodeIndirect = NodeIndirect
+        // System.out.println(NodeIndirect.toString());
+        return NodeIndirect;
+        // System.out.println( arrList.get(index) +"Indirectly follows " +
+        // NodeIndirect);
+    }
 
     public static void allFollows(char X, ArrayList<Node> adjList, int index) {
         // System.out.println(adjList.indexOf(X));
         // int index = 0; // store the index from the char
         String directNodes = ""; // create a strign variable to store directy connectedd nodes
         for (Character ch : adjList.get(index).followers) { // for loop to find nodes
-            directNodes = directNodes + ch + ", ";
+            directNodes = directNodes + ch + ",";
 
         }
         // remove the first letter and the last comma on the last condiion
-        directNodes = directNodes.substring(0, directNodes.length() - 2);
+        directNodes = directNodes.substring(0, directNodes.length() - 1);
         if (directNodes.length() == 1) {
             System.out.println(X + " directly follows { }");
 
         } else {
-            directNodes = directNodes.substring(3);
+            directNodes = directNodes.substring(2);
             // then list the directly follows node
             System.out.println(X + " directly follows {" + directNodes + "}");
         }
@@ -63,6 +80,8 @@ class Hw6_p5 {
 
         for (int i = 0; i < charList.size(); i++) {
             allFollows(charList.get(i), adjList, i);
+            System.out.println(charList.get(i) + " indirectly follows " + checkIndirect(i, charList, adjList));
+
         }
     }
 }
